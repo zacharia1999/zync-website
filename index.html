@@ -5,26 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zync – AI Productivity Chrome Extension</title>
     <meta name="description" content="Boost AI productivity with Zync. Create perfect prompts, summarize chats, and sync across ChatGPT, Claude, Gemini, and more.">
+    <meta name="keywords" content="AI productivity, Chrome extension, ChatGPT, Claude, Gemini, prompts">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #0F172A 0%, #3B82F6 100%); }
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); }
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0F172A 0%, #3B82F6 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: scale(1.02);
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- Navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-2xl font-bold text-gray-900">Zync</span>
-                    <span class="ml-1 px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800">AI</span>
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-gray-900">Zync</span>
+                        <span class="ml-1 px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800">AI</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#features" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Features</a>
+                    <a href="#how-it-works" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">How It Works</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">About</a>
                 </div>
                 <div class="flex items-center">
-                    <a href="https://chromewebstore.google.com/detail/nonbggilbinbbibefmpdkdlkpddngdgc" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700" target="_blank">
+                    <a href="https://chromewebstore.google.com/detail/nonbggilbinbbibefmpdkdlkpddngdgc?authuser=0&hl=en" class="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" target="_blank">
                         Add to Chrome
                     </a>
                 </div>
@@ -32,26 +69,62 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="gradient-bg text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Zync – The Ultimate AI Productivity Extension</h1>
-                <p class="text-xl mb-8 text-gray-200">Manage prompts, summarize chats, and transfer conversations across all major AI platforms effortlessly.</p>
-                <a href="https://chromewebstore.google.com/detail/nonbggilbinbbibefmpdkdlkpddngdgc" class="btn-primary inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700" target="_blank">
-                    Add to Chrome – Free
-                </a>
+            <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                <div class="mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Zync – The Ultimate AI Productivity Extension</h1>
+                    <p class="text-xl mb-8 text-gray-200">Manage prompts, summarize chats, and transfer conversations across all major AI platforms effortlessly.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="https://chromewebstore.google.com/detail/nonbggilbinbbibefmpdkdlkpddngdgc?authuser=0&hl=en" class="btn-primary inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700" target="_blank">
+                            Add to Chrome
+                        </a>
+                        <a href="#features" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-green-700 bg-white hover:bg-gray-50">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="floating">
+                        <img class="w-full rounded-lg shadow-2xl" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Zync extension in action">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-gray-50">
+    <!-- Logos Section -->
+    <div class="bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 mb-8">Works seamlessly with</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center">
+                <div class="flex justify-center">
+                    <img class="h-12" src="https://logovent.com/blog/wp-content/uploads/2024/09/Chat-GPT-Logo.png" alt="ChatGPT">
+                </div>
+                <div class="flex justify-center">
+                    <img class="h-12" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg" alt="Claude">
+                </div>
+                <div class="flex justify-center">
+                    <img class="h-12" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini">
+                </div>
+                <div class="flex justify-center">
+                    <img class="h-12" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Perplexity_AI_logo.svg" alt="Perplexity">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Supercharge Your AI Workflow</h2>
-                <p class="text-xl text-gray-600">Zync provides powerful tools to enhance your productivity across all major AI platforms</p>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Zync provides powerful tools to enhance your productivity across all major AI platforms</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
                 <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
                     <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-magic text-green-600 text-2xl"></i>
@@ -60,6 +133,7 @@
                     <p class="text-gray-600">Generate flawless AI prompts in 6 easy steps with our guided prompt engineering system.</p>
                 </div>
                 
+                <!-- Feature 2 -->
                 <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
                     <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-book text-green-600 text-2xl"></i>
@@ -68,6 +142,7 @@
                     <p class="text-gray-600">Explore 26+ professional prompts across multiple categories for all your AI needs.</p>
                 </div>
                 
+                <!-- Feature 3 -->
                 <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
                     <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-file-alt text-green-600 text-2xl"></i>
@@ -75,10 +150,157 @@
                     <h3 class="text-xl font-bold text-gray-900 mb-3">AI Summarizer</h3>
                     <p class="text-gray-600">Summarize and move conversations between AI platforms when tokens expire or context is lost.</p>
                 </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Site Detection</h3>
+                    <p class="text-gray-600">Automatically adapts to ChatGPT, Claude, Gemini, and Perplexity for seamless integration.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-icons text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Real AI Icons</h3>
+                    <p class="text-gray-600">Authentic, platform-specific icons for easy navigation and visual consistency.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-history text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Conversation History</h3>
+                    <p class="text-gray-600">Never lose track of important discussions with our organized conversation history.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">How Zync Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Get started in minutes and transform your AI workflow</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-6 text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Install Zync</h3>
+                    <p class="text-gray-600">Add the extension from Chrome Web Store with one click. No complicated setup required.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-6 text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Select Your AI Platform</h3>
+                    <p class="text-gray-600">Choose from ChatGPT, Claude, Gemini, or Perplexity. Zync automatically detects your platform.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-6 text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Boost Your Productivity</h3>
+                    <p class="text-gray-600">Start creating perfect prompts, summarizing chats, and transferring conversations seamlessly.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="https://chromewebstore.google.com/detail/nonbggilbinbbibefmpdkdlkpddngdgc?authuser=0&hl=en" class="btn-primary inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700" target="_blank">
+                    Add to Chrome – Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Save Time, Boost Productivity</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Work smarter with AI across all your favorite platforms</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="flex items-center justify-center h-8 w-8 rounded-full bg-green-100 text-green-600">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Multi-Platform Support</h3>
+                            <p class="text-gray-600 mt-1">Work across ChatGPT, Claude, Gemini, and Perplexity without switching contexts or losing information.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="flex items-center justify-center h-8 w-8 rounded-full bg-green-100 text-green-600">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Time-Saving Tools</h3>
+                            <p class="text-gray-600 mt-1">Our prompt library and summarizer save hours of manual work each week.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="flex items-center justify-center h-8 w-8 rounded-full bg-green-100 text-green-600">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Context Preservation</h3>
+                            <p class="text-gray-600 mt-1">Never lose important context when switching between AI models or hitting token limits.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="flex items-center justify-center h-8 w-8 rounded-full bg-green-100 text-green-600">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Professional Results</h3>
+                            <p class="text-gray-600 mt-1">Engineered prompts deliver higher quality outputs for business and research applications.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="https://chromewebstore.google.com/detail/nonbggilbinbbibefmpdkdlkpddngdgc?authuser=0&hl=en" class="btn-primary inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700" target="_blank">
+                        Get Zync Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Transform Your AI Workflow?</h2>
+            <div class="flex justify-center">
+                <a href="https://chromewebstore.google.com/detail/nonbggilbinbbibefmpdkdlkpddngdgc?authuser=0&hl=en" class="btn-primary inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700" target="_blank">
+                    Add to Chrome – Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 class="text-2xl font-bold mb-2">Zync</h3>
@@ -96,5 +318,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Simple scroll animation for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Track CTA clicks
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // In a real implementation, you would track this conversion
+                console.log('CTA clicked:', this.textContent.trim());
+            });
+        });
+    </script>
 </body>
 </html>
